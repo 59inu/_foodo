@@ -1,0 +1,25 @@
+{
+  "name": "foodo-server",
+  "version": "1.0.0",
+  "description": "2ND PREFERENCE _ IM first project ",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codestates/Foodo-server.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/codestates/Foodo-server/issues"
+  },
+  "homepage": "https://github.com/codestates/Foodo-server#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mysql2": "^2.0.0",
+    "sequelize": "^5.21.1"
+  }
+}
