@@ -4,7 +4,7 @@ module.exports = (sequelize, DataTypes)=>{
     ing_id : DataTypes.INTEGER,
     exp : DataTypes.STRING,
     quantity : DataTypes.INTEGER,
-    memo : DataTypes.INTEGER,
+    memo : DataTypes.STRING,
     frozen : DataTypes.BOOLEAN
   })
 };
