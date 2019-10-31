@@ -1,6 +1,7 @@
 const express = require('express')
 const cors = require('cors')
-var sequelize = require('./models/index').sequelize;
+const session = require('express-session')
+var sequelize = require('./models/index').sequelize
 
 const userRouter = require('./routes/user')
 const ingRouter = require('./routes/ingredient')
@@ -12,6 +13,11 @@ const app = express()
 const port = 4000
 app.use(express.json())
 app.use(cors())
+app.use(
+  session({
+    secret: 'Foodo'
+  })
+)
 
 app.use('/user', userRouter)
 app.use('/grocery', ingRouter)
