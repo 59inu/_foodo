@@ -3,6 +3,7 @@ module.exports = (sequelize, DataTypes)=>{
     exp : DataTypes.STRING,
     quantity : DataTypes.INTEGER,
     memo : DataTypes.STRING,
-    frozen : DataTypes.BOOLEAN
+    frozen : DataTypes.BOOLEAN,
+    unit : DataTypes.STRING
   })
 };

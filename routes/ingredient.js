@@ -5,12 +5,6 @@ const { Ing, User_Ing } = require('../models');
 
 const Op = Sequelize.Op;
 
-// User_Ing.findOne({
-//   where:{ingredientId : 24},
-//   include : [Ing]
-// }).then(result =>{
-//   console.log(result.ingredient.ing_name)
-// })
 
 //회원별 재고 목록 조회
 router.get('/', (req, res)=>{
@@ -18,14 +12,14 @@ router.get('/', (req, res)=>{
   //let user_id = req.session.userId
   User_Ing.findAll({
     where:{userId : user_id},
-    attributes :['ingredientId','exp','quantity','memo','frozen','createdAt'],
+    attributes :['ingredientId','exp','quantity','memo','frozen','createdAt','unit'],
     include : [Ing]
   })
   .then((data) =>{
     let result = [];
     for(let i = 0; i < data.length; i++){
       let ing ={}
-      ing.naem = data[i].ingredient.ing_name
+      ing.name = data[i].ingredient.ing_name
       ing.put = data[i].createdAt
       ing.rest = data[i].exp
       ing.msg = 'hurry up'
@@ -34,7 +28,6 @@ router.get('/', (req, res)=>{
       ing.quantity = data[i].quantity
       result.push(ing)
     }
-   // console.log(result)
     res.status(200).json(result)
   }).catch(err =>{
     res.status(400)
@@ -44,7 +37,7 @@ router.get('/', (req, res)=>{
 //전체 재고 목록 조회
 router.get('/all', (req, res)=>{
   Ing.findAll({
-    attributes:['id','ing_name','category','main']
+    attributes:['id','ing_name','category']
   })
   .then((data) =>{
     res.status(200).json(data)
@@ -55,15 +48,15 @@ router.get('/all', (req, res)=>{
 
 //재고 검색 자동완성 
 router.get('/:keyword', (req, res)=>{
-  console.log(req.params.keyword)
+  //req.params.keyword
   Ing.findAll({
     where : {
       ing_name :{
-        [Op.like]: "%" + 'req.params.keyword' + "%"
+        [Op.like]: "%" + '고' + "%"
       }
-    }
+    },
+    attributes:['ing_name']
   }).then(data =>{
-   // console.log(data)
     res.status(200).json(data)
   }).catch(err =>{
     res.sendStatus(500)
@@ -85,7 +78,8 @@ router.post('/addItem', (req, res)=>{
       exp : req.body.exp,
       quantity :req.body.quantity,
       memo :req.body.quantity,
-      frozen : req.body.frozen
+      frozen : req.body.frozen,
+      unit : req.body.unit
     })
   }) 
   .then((result) => {
