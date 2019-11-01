@@ -19,8 +19,8 @@ app.use(
   })
 )
 
-app.use('/user', userRouter)
-app.use('/grocery', ingRouter)
+app.use('/users', userRouter)
+app.use('/ingredients', ingRouter)
 app.use('/menus', menuRouter)
 
 app.set('port', port)
