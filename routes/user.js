@@ -12,6 +12,9 @@ router.get('/', (req, res) => {
     .then(result => {
       res.send(result)
     })
+    .catch(err => {
+      res.status(500).send(err)
+    })
 })
 
 router.get('/:id', (req, res) => {
@@ -34,6 +37,9 @@ router.get('/:id', (req, res) => {
         res.send('invalid user')
       }
     })
+    .catch(err => {
+      res.status(500).send(err)
+    })
 })
 
 router.post('/signin', (req, res) => {
@@ -49,7 +55,7 @@ router.post('/signin', (req, res) => {
     })
     .then((result) => {
       if (result) {
-        userSession.userId = result.dataValues.userName
+        userSession.userId = result.dataValues.id
       }
       console.dir(userSession.userId)
       return userSession.userId
@@ -60,6 +66,9 @@ router.post('/signin', (req, res) => {
       } else {
         res.send('login failed')
       }
+    })
+    .catch(err => {
+      res.status(500).send(err)
     })
 })
 
@@ -79,7 +88,7 @@ router.post('/signup', (req, res) => {
           userName: req.body.userName
         })
           .then(result => {
-            res.status(201).send(result)
+            res.status(201).json(result)
           })
           .catch(err => {
             res.status(500).send(err)
@@ -87,6 +96,9 @@ router.post('/signup', (req, res) => {
       } else if (result) {
         res.send('email already exists!')
       }
+    })
+    .catch(err => {
+      res.status(500).send(err)
     })
 })
 
