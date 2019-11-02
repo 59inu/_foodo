@@ -8,8 +8,7 @@ const Op = Sequelize.Op;
 
 //회원별 재고 목록 조회
 router.get('/', (req, res)=>{
-  let user_id = 1;
-  //let user_id = req.session.userId
+  let user_id = req.session.userId
   User_Ing.findAll({
     where:{userId : user_id},
     attributes :['ingredientId','exp','quantity','memo','frozen','createdAt','unit'],
@@ -119,6 +118,37 @@ router.post('/quantity', (req, res)=>{
     res.sendStatus(500)              
   })
 });
+
+//회원별 재고량 삭제
+router.post('/delete', (req, res)=>{
+  Ing.findOne({
+    where :{
+      ing_name : req.body.ing_name
+    }
+  }).then(result =>{
+    let user_id = req.session.userId
+    return User_Ing.findOne({
+      where :{
+        userId : user_id,
+        ingredientId : result.id
+      }
+    })
+  })
+  .then(project=>{
+    User_Ing.destroy({
+      where :{
+        id : project.id
+      }
+    })
+  })
+  .then((result) => {
+    res.status(201).json(result)     
+  })
+  .catch(err => {
+    res.sendStatus(500)              
+  })
+});
+
 
 
 module.exports = router;

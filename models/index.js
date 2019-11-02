@@ -11,7 +11,7 @@ db.User = require('./users')(sequelize, Sequelize);
 db.Ing = require('./ingredients')(sequelize, Sequelize);
 db.Menu = require('./menus')(sequelize, Sequelize);
 db.User_Ing = require('./user_ing')(sequelize, Sequelize);
-db.Menu_Ing = require('./menu_ing')(sequelize, Sequelize);
+
 
 db.User.hasMany(db.User_Ing)
 db.User_Ing.belongsTo(db.User)
