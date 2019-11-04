@@ -4,6 +4,7 @@ module.exports = (sequelize, DataTypes) => {
     quantity: DataTypes.INTEGER,
     memo: DataTypes.STRING,
     frozen: DataTypes.BOOLEAN,
-    unit: DataTypes.STRING
+    unit: DataTypes.STRING,
+    deleted: DataTypes.INTEGER
   })
 }
