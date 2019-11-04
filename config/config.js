@@ -1,3 +1,8 @@
+/* eslint-disable spaced-comment */
+//env.NODE_ENV = dev || production
+//env.AWS_DB_HOST = ...
+//설정하기(터미널)
+
 const env = process.env.NODE_ENV
 
 const dev = {
@@ -16,7 +21,7 @@ const production = {
     port: 4000
   },
   db: {
-    host: 'foodo.cyx2csl3obmx.us-east-2.rds.amazonaws.com',
+    host: process.env.AWS_DB_HOST,
     user: 'foodo',
     password: 'foodomaster'
   }
