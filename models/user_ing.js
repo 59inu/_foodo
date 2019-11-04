@@ -5,6 +5,7 @@ module.exports = (sequelize, DataTypes) => {
     memo: DataTypes.STRING,
     frozen: DataTypes.BOOLEAN,
     unit: DataTypes.STRING,
-    deleted: DataTypes.INTEGER
+    deleted: DataTypes.INTEGER,
+    entryQ: DataTypes.INTEGER
   })
 }

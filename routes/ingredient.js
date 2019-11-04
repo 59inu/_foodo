@@ -48,6 +48,8 @@ router.get('/', (req, res) => {
             ing.userMemo = data[i].memo
             ing.frozen = data[i].frozen
             ing.quantity = data[i].quantity
+            ing.unit = data[i].unit
+            ing.entryQ = data[i].entryQ
             result.push(ing)
           }
         }
@@ -104,6 +106,7 @@ router.post('/addItem', (req, res) => {
           memo: req.body.quantity,
           frozen: req.body.frozen,
           unit: req.body.unit,
+          entryQ: req.body.quantity,
           deleted: 0
         })
       })
