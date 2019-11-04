@@ -8,11 +8,12 @@ const ingRouter = require('./routes/ingredient')
 const menuRouter = require('./routes/menu')
 const branchRouter = require('./routes/branch')
 const cookieParser = require('cookie-parser')
+const config = require('./config/config')
 
 sequelize.sync()
 
 const app = express()
-const port = 4000
+const port = config.app.port
 app.use(cookieParser());
 app.use(express.json())
 app.use(cors())
