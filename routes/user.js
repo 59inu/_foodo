@@ -4,6 +4,8 @@ const crypto = require('crypto')
 var { User } = require('./../models')
 
 const salt = "secondpreference'sfirstproject"
+const jwt = require('jsonwebtoken')
+const secretObj = require('../config/jwt')
 
 router.get('/', (req, res) => {
   User.findAll({
@@ -43,7 +45,6 @@ router.get('/:id', (req, res) => {
 })
 
 router.post('/signin', (req, res) => {
-  const userSession = req.session
   User
     .findOne({
       where: {
@@ -54,15 +55,20 @@ router.post('/signin', (req, res) => {
       }
     })
     .then((result) => {
+      console.log('로그인요청')
       if (result) {
-        userSession.userId = result.dataValues.id
-      }
-      console.dir(userSession.userId)
-      return userSession.userId
-    })
-    .then(result => {
-      if (result) {
-        res.send(`login secceed, ${userSession.userId}`)
+        let token = jwt.sign({
+          email: req.body.email,
+          userId: result.dataValues.id
+        },
+        secretObj.secret,
+        {
+          expiresIn: '5m'
+        })
+        res.cookie('user', token)
+        res.json({
+          token: token
+        })
       } else {
         res.send('login failed')
       }
@@ -80,6 +86,7 @@ router.post('/signup', (req, res) => {
   })
     .then((result) => {
       if (!result) {
+        console.log(req.body)
         User.create({
           email: req.body.email,
           password: crypto.createHmac('sha512', salt)

@@ -7,11 +7,13 @@ const userRouter = require('./routes/user')
 const ingRouter = require('./routes/ingredient')
 const menuRouter = require('./routes/menu')
 const branchRouter = require('./routes/branch')
+const cookieParser = require('cookie-parser')
 
 sequelize.sync()
 
 const app = express()
-const port = 4000
+const port = 5000
+app.use(cookieParser());
 app.use(express.json())
 app.use(cors())
 app.use(
