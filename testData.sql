@@ -5,9 +5,9 @@
 -- mysql -u root -p foodo < ./testData.sql
 
 INSERT INTO USERS (email, password, userName, createdAt, updatedAt) 
-VALUES ('111@test.com','12341234','test01', '2019-11-03', '2019-11-03'),
- ('222@test.com','12341234','test02', '2019-11-03', '2019-11-03'),
- ('333@test.com','12341234','test03', '2019-11-03', '2019-11-03');
+VALUES ('111@test.com','7dcf0061d18f8497ca853149a33f3cb9cf14adb05f02336c35e2c2b0ffc34760226adf2291ec3289a46bf1849736bf9ce3681cc6a6aaad1d0de4afb99faf7724','test01', '2019-11-03', '2019-11-03'),
+ ('222@test.com','7dcf0061d18f8497ca853149a33f3cb9cf14adb05f02336c35e2c2b0ffc34760226adf2291ec3289a46bf1849736bf9ce3681cc6a6aaad1d0de4afb99faf7724','test02', '2019-11-03', '2019-11-03'),
+ ('333@test.com','7dcf0061d18f8497ca853149a33f3cb9cf14adb05f02336c35e2c2b0ffc34760226adf2291ec3289a46bf1849736bf9ce3681cc6a6aaad1d0de4afb99faf7724','test03', '2019-11-03', '2019-11-03');
 INSERT INTO INGREDIENTS (ing_name, category, main, createdAt, updatedAt) 
 VALUES ('ing01','category01',true, '2019-11-03', '2019-11-03'), 
 ('ing02','category02',false, '2019-11-03', '2019-11-03'), 
