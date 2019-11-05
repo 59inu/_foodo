@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/codestates/Foodo-server#readme",
   "dependencies": {
+    "chart.js": "^2.9.2",
     "cookie-parser": "^1.4.4",
     "cookieparser": "^0.1.0",
     "cors": "^2.8.5",

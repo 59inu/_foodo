@@ -6,6 +6,7 @@ module.exports = (sequelize, DataTypes) => {
     frozen: DataTypes.BOOLEAN,
     unit: DataTypes.STRING,
     deleted: DataTypes.INTEGER,
-    entryQ: DataTypes.INTEGER
+    entryQ: DataTypes.INTEGER,
+    count: DataTypes.INTEGER
   })
 }

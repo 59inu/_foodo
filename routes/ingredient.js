@@ -121,24 +121,26 @@ router.post('/addItem', (req, res) => {
 
 // 회원별 재고량 수정
 router.post('/quantity', (req, res) => {
-  auth(req, res, () => {
+ auth(req, res, () => {
     Ing.findOne({
       where: {
         ing_name: req.body.ing_name
       }
     }).then(result => {
+      console.log(result.id)
       const user_id = req.decoded.userId
       return User_Ing.findOne({
         where: {
           userId: user_id,
           ingredientId: result.id
         }
-      })
+      }) 
     })
       .then(project => {
         if (project) {
           project.update({
-            quantity: req.body.quantity
+            quantity: req.body.quantity,
+            count: project.count+1
           })
         }
       })
@@ -169,13 +171,13 @@ router.post('/delete', (req, res) => {
     })
       .then(project => {
         if (req.body.msg === 'No Eat') {
-          User_Ing.update({
+          project.update({
             where: {
               deleted: 2
             }
           })
         } else {
-          User_Ing.update({
+          project.update({
             where: {
               deleted: 1
             }
