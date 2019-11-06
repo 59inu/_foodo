@@ -1,6 +1,7 @@
+const config = require('./../config/config')
 const Sequelize = require('sequelize')
 const sequelize = new Sequelize(
-  'foodo', process.env.dbuser, process.env.dbpw, { host: process.env.dbhost, dialect: 'mysql' }
+  'foodo', config.db.user, config.db.password, { host: config.db.host, dialect: 'mysql' }
 
 )
 const db = {}
