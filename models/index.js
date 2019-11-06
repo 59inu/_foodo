@@ -1,6 +1,7 @@
 const Sequelize = require('sequelize')
 const sequelize = new Sequelize(
-  'foodo', 'root', '', { host: 'localhost', dialect: 'mysql' }
+  'foodo', process.env.dbuser, process.env.dbpw, { host: process.env.dbhost, dialect: 'mysql' }
+
 )
 const db = {}
 
@@ -12,6 +13,7 @@ db.Ing = require('./ingredients')(sequelize, Sequelize)
 db.Menu = require('./menus')(sequelize, Sequelize)
 db.User_Ing = require('./user_ing')(sequelize, Sequelize)
 
+
 db.User.hasMany(db.User_Ing)
 db.User_Ing.belongsTo(db.User)
 
@@ -20,5 +22,6 @@ db.User_Ing.belongsTo(db.Ing)
 
 db.Menu.belongsTo(db.Ing)
 db.Ing.hasMany(db.Menu)
+
 
 module.exports = db
