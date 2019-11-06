@@ -1,7 +1,7 @@
 const config = require('./../config/config')
 const Sequelize = require('sequelize')
 const sequelize = new Sequelize(
-  'foodo', config.db.user, config.db.password, { host: config.db.host, dialect: 'mysql' }
+  'foodo', 'foodo', 'foodomaster', { host: 'foodo.cyx2csl3obmx.us-east-2.rds.amazonaws.com', dialect: 'mysql' }
 
 )
 const db = {}
