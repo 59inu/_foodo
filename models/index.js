@@ -1,24 +1,25 @@
-const Sequelize = require('sequelize')
-const sequelize = new Sequelize(
-  'foodo', 'root', '', { host: 'localhost', dialect: 'mysql' }
-)
-const db = {}
+const Sequelize = require("sequelize");
+const sequelize = new Sequelize("foodo", "root", "1234", {
+  host: "localhost",
+  dialect: "mysql"
+});
+const db = {};
 
-db.sequelize = sequelize
-db.Sequelize = Sequelize
+db.sequelize = sequelize;
+db.Sequelize = Sequelize;
 
-db.User = require('./users')(sequelize, Sequelize)
-db.Ing = require('./ingredients')(sequelize, Sequelize)
-db.Menu = require('./menus')(sequelize, Sequelize)
-db.User_Ing = require('./user_ing')(sequelize, Sequelize)
+db.User = require("./users")(sequelize, Sequelize);
+db.Ing = require("./ingredients")(sequelize, Sequelize);
+db.Menu = require("./menus")(sequelize, Sequelize);
+db.User_Ing = require("./user_ing")(sequelize, Sequelize);
 
-db.User.hasMany(db.User_Ing)
-db.User_Ing.belongsTo(db.User)
+db.User.hasMany(db.User_Ing);
+db.User_Ing.belongsTo(db.User);
 
-db.Ing.hasMany(db.User_Ing)
-db.User_Ing.belongsTo(db.Ing)
+db.Ing.hasMany(db.User_Ing);
+db.User_Ing.belongsTo(db.Ing);
 
-db.Menu.belongsTo(db.Ing)
-db.Ing.hasMany(db.Menu)
+db.Menu.belongsTo(db.Ing);
+db.Ing.hasMany(db.Menu);
 
-module.exports = db
+module.exports = db;
