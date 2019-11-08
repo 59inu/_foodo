@@ -10,7 +10,18 @@ module.exports = {
     auth(req, res, () => {
       User_Ing.findAll({
         where: { userId: req.decoded.userId },
-        attributes: ['id', 'ingredientId', 'exp', 'quantity', 'memo', 'frozen', 'createdAt', 'unit'],
+        attributes: [
+          'id',
+          'ingredientId',
+          'exp',
+          'quantity',
+          'memo',
+          'frozen',
+          'createdAt',
+          'unit',
+          'deleted',
+          'entryQ'
+        ],
         include: [Ing]
       })
         .then((data) => {
@@ -19,8 +30,14 @@ module.exports = {
             var today = new Date()
             var dateString = exp
             var dateArray = dateString.split('-')
-            var dateObj = new Date(dateArray[0], Number(dateArray[1]) - 1, dateArray[2])
-            var restDay = Math.ceil((dateObj.getTime() - today.getTime()) / 1000 / 60 / 60 / 24)
+            var dateObj = new Date(
+              dateArray[0],
+              Number(dateArray[1]) - 1,
+              dateArray[2]
+            )
+            var restDay = Math.ceil(
+              (dateObj.getTime() - today.getTime()) / 1000 / 60 / 60 / 24
+            )
             return restDay
           }
           const message = function (rest) {
@@ -51,7 +68,7 @@ module.exports = {
           }
           res.status(200).json(result)
         }).catch(err => {
-          res.status(400).send(err)
+          res.status(500).send(err)
         })
     })
   },
@@ -63,7 +80,7 @@ module.exports = {
       .then((data) => {
         res.status(200).json(data)
       }).catch(err => {
-        res.status(400).send(err)
+        res.status(500).send(err)
       })
   },
 
@@ -95,7 +112,7 @@ module.exports = {
             ingredientId: result.id,
             exp: req.body.exp, // 날짜
             quantity: req.body.quantity,
-            memo: req.body.quantity,
+            memo: req.body.memo,
             frozen: req.body.frozen,
             unit: req.body.unit,
             entryQ: req.body.quantity,
@@ -118,12 +135,12 @@ module.exports = {
           ing_name: req.body.ing_name
         }
       }).then(result => {
-        console.log(result.id)
         const user_id = req.decoded.userId
         return User_Ing.findOne({
           where: {
             userId: user_id,
-            ingredientId: result.id
+            ingredientId: result.id,
+            createdAt: req.body.put
           }
         })
       })
@@ -154,22 +171,19 @@ module.exports = {
         return User_Ing.findOne({
           where: {
             userId: req.decoded.userId,
-            ingredientId: result.id
+            ingredientId: result.id,
+            createdAt: req.body.put
           }
         })
       })
         .then(project => {
           if (req.body.msg === 'No Eat') {
             project.update({
-              where: {
-                deleted: 2
-              }
+              deleted: 2
             })
           } else {
             project.update({
-              where: {
-                deleted: 1
-              }
+              deleted: 1
             })
           }
         })
