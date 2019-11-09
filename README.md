@@ -1,5 +1,4 @@
-# Foodo-server
-</br>
+# Foodo(-server)
 </br>
 
 ## Concept
