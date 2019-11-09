@@ -1,6 +1,8 @@
 # Foodo-server
+</br>
+</br>
 
-## concept
+## Concept
 
 A simple web-app tool to manage misterious stock of your refregiraor!
 
