@@ -29,55 +29,55 @@ npm install chart.js
 ```
 
 ## API
-GET  / users</br>
-; datas of all users
-request : [{'email', 'userName', 'createdAt'},...]
+GET  / users </br>
+; datas of all users </br>
+request : [{'email', 'userName', 'createdAt'},...]</br></br>
 
-GET  / users/:id
-; a data for one user specified by userid in database
-request : {'email', 'userName', 'createdAt'}
+GET  / users/:id</br>
+; a data for one user specified by userid in database</br>
+request : {'email', 'userName', 'createdAt'}</br></br>
 
-GET  / users/signout
-request : 'ok'
+GET  / users/signout</br>
+request : 'ok'</br></br>
 
-POST / users/signin
-request : {'email', 'password'}
-response : 'ok'
+POST / users/signin</br>
+request : {'email', 'password'}</br>
+response : 'ok'</br></br>
 
-POST / users/signup
-request : {'email', 'password', 'userName'}
-response : 'ok'
+POST / users/signup</br>
+request : {'email', 'password', 'userName'}</br>
+response : 'ok'</br></br>
 
-GET  / ingredients/all
-; datas of all ingredients
-response : [{'id', 'ing_name', 'category'},...]
+GET  / ingredients/all</br>
+; datas of all ingredients</br>
+response : [{'id', 'ing_name', 'category'},...]</br></br>
 
-GET  / ingredients  
-; ingredients stock datas for logged in user
-response : [{'id', 'name', 'put', 'rest', 'msg', 'userMemo','frozen','quantity','unit','entryQ'} ...]
+GET  / ingredients  </br>
+; ingredients stock datas for logged in user</br>
+response : [{'id', 'name', 'put', 'rest', 'msg', 'userMemo','frozen','quantity','unit','entryQ'} ...]</br></br>
 
-POST / ingredients/additem
-; add ingredients to a user's stock
-request : { 'ing_name', 'exp', 'quantity', 'userMemo', 'frozen', 'unit','quantity'}
-response : 'ok'
+POST / ingredients/additem</br>
+; add ingredients to a user's stock</br>
+request : { 'ing_name', 'exp', 'quantity', 'userMemo', 'frozen', 'unit','quantity'}</br>
+response : 'ok'</br></br>
 
-POST / ingredients/quantity
-; modify quantity of ingredients
-request : {'ing_name', 'put', 'quantity'}
-response : 'ok'
+POST / ingredients/quantity</br>
+; modify quantity of ingredients</br>
+request : {'ing_name', 'put', 'quantity'}</br>
+response : 'ok'</br></br>
 
-POST / ingredients/delete
-; delete quantity of ingredients
-request : {'ing_name', 'put'}
-response : 'ok'
+POST / ingredients/delete</br>
+; delete quantity of ingredients</br>
+request : {'ing_name', 'put'}</br>
+response : 'ok'</br></br>
 
-GET  / menus/all
-; all menu
-response : {['id', 'menu_name' ,'menu_ing'],...}
+GET  / menus/all</br>
+; all menu</br>
+response : {['id', 'menu_name' ,'menu_ing'],...}</br></br>
 
-GET  / menus
-; recomend menu for a user
-response : {'menu_name', 'menu_ing'}
+GET  / menus</br>
+; recomend menu for a user</br>
+response : {'menu_name', 'menu_ing'}</br></br>
 
 
 
