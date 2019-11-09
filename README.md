@@ -9,7 +9,7 @@ A simple web-app tool to manage misterious stock of your refregiraor!
 React
 React-strap
 
-- - -
+***
 
 Sequelize
 Mysql
