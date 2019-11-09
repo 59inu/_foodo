@@ -1,4 +1,4 @@
-# Foodo(-server)
+# Foodo
 </br>
 
 ## Concept
@@ -23,12 +23,16 @@ Jwt
 npm install
 ```
 
-If error about chart
+If some error in chart
 
 ```
 npm install chart.js
 ```
 
+To start
+```
+npm start
+```
 ## API
 GET  / users </br>
 ; datas of all users </br>
