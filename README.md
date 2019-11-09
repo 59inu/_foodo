@@ -29,7 +29,7 @@ npm install chart.js
 ```
 
 ## API
-GET  / users
+GET  / users</br>
 ; datas of all users
 request : [{'email', 'userName', 'createdAt'},...]
 
