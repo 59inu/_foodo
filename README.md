@@ -4,7 +4,7 @@
 
 ## Concept
 
-A simple web-app tool to manage misterious stock of your refregiraor!
+A simple web-app tool to manage misterious stock of your refrigerator!
 
 ## Skill Stack
 
