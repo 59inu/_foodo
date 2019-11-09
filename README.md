@@ -6,14 +6,14 @@ A simple web-app tool to manage misterious stock of your refregiraor!
 
 ## Skill Stack
 
-React
-React-strap
+React</br>
+React-strap</br>
 </br>
 ..
 </br>
-Sequelize
-Mysql
-Express
+Sequelize</br>
+Mysql</br>
+Express</br>
 Jwt
 
 ## Usase
