@@ -1,4 +1,5 @@
 # Foodo
+
 </br>
 
 ## Concept
@@ -30,19 +31,22 @@ npm install chart.js
 ```
 
 To start
+
 ```
 npm start
 ```
+
 ## API
-GET  / users </br>
-; datas of all users </br>
+
+GET / users </br>
+; return a array of objects of all users in a database</br>
 request : [{'email', 'userName', 'createdAt'},...]</br></br>
 
-GET  / users/:id</br>
-; a data for one user specified by userid in database</br>
+GET / users/:id</br>
+; return a data of one user specified by userid in a database</br>
 request : {'email', 'userName', 'createdAt'}</br></br>
 
-GET  / users/signout</br>
+GET / users/signout</br>
 request : 'ok'</br></br>
 
 POST / users/signin</br>
@@ -53,11 +57,11 @@ POST / users/signup</br>
 request : {'email', 'password', 'userName'}</br>
 response : 'ok'</br></br>
 
-GET  / ingredients/all</br>
+GET / ingredients/all</br>
 ; datas of all ingredients</br>
 response : [{'id', 'ing_name', 'category'},...]</br></br>
 
-GET  / ingredients  </br>
+GET / ingredients </br>
 ; ingredients stock datas for logged in user</br>
 response : [{'id', 'name', 'put', 'rest', 'msg', 'userMemo','frozen','quantity','unit','entryQ'} ...]</br></br>
 
@@ -76,15 +80,10 @@ POST / ingredients/delete</br>
 request : {'ing_name', 'put'}</br>
 response : 'ok'</br></br>
 
-GET  / menus/all</br>
+GET / menus/all</br>
 ; all menu</br>
 response : {['id', 'menu_name' ,'menu_ing'],...}</br></br>
 
-GET  / menus</br>
+GET / menus</br>
 ; recomend menu for a user</br>
 response : {'menu_name', 'menu_ing'}</br></br>
-
-
-
-
-
