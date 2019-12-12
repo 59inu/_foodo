@@ -1,6 +1,9 @@
 # Foodo
+:apple: a web application to check inside of your doubtful refrigerator 
 
-</br>
+
+<br>
+<br>
 
 ## Concept
 
